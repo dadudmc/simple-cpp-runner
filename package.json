@@ -1,0 +1,70 @@
+{
+  "name": "simple-cpp-runner",
+  "displayName": "Simple C++ Runner",
+  "description": "A simple way to compile and run C++ files. Must have g++ installed!",
+  "version": "0.0.1",
+  "publisher": "Dadu",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onDidChangeActiveTextEditor",
+    "onDidChangeActiveEditor"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.runCpp",
+        "title": "Run C++ File",
+        "category": "C++"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.runCpp",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorLangId == cpp || explorerViewletVisible || terminalFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.runCpp",
+          "when": "editorLangId == cpp",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.runCpp",
+          "when": "resourceLangId == cpp",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dadudmc/simple-cpp-runner"
+  },
+  "license": "GPL-3.0",
+  "icon": "images/logo.png",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -p ./ -watch",
+    "test": "node ./out/test/runTest"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "@types/vscode": "^1.60.0",
+    "typescript": "^4.4.4",
+    "vscode-test": "^1.6.0"
+  }
+}
